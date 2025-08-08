@@ -69,18 +69,26 @@ export default function Home() {
       </nav>
       <header className="text-center py-20 bg-gradient-to-br from-blue-200 via-white to-blue-100 rounded-2xl shadow-md mb-16">
         <h1 className="text-5xl font-extrabold text-blue-800 mb-4">NextGen Digital Agency</h1>
-        <p className="text-xl max-w-xl mx-auto text-gray-700">We help small businesses grow with high-converting websites, smart SEO, and paid advertising that works.</p>
-        <Link href="/contact" className="mt-6 inline-block bg-blue-700 text-white px-8 py-3 rounded-xl text-lg shadow-lg transform transition hover:scale-105 hover:bg-blue-800">
+        <p className="text-xl max-w-xl mx-auto text-gray-700 mb-12">
+          We help small businesses grow with high-converting websites, smart SEO, and paid advertising that works.
+        </p>
+
+        {/* AI-Powered Digital Growth content as part of header */}
+        <div>
+          <h2 className="text-2xl font-bold text-blue-700 mb-2">AI-Powered Digital Growth</h2>
+          <p className="text-gray-700 max-w-2xl mx-auto">
+            We leverage cutting-edge Artificial Intelligence to analyze your market, predict trends, and optimize your campaigns in real-time. Our AI tools ensure your business stays ahead of the competition with smarter strategies and faster results.
+          </p>
+        </div>
+
+        <Link
+          href="/contact"
+          className="mt-6 inline-block bg-blue-700 text-white px-8 py-3 rounded-xl text-lg shadow-lg transform transition hover:scale-105 hover:bg-blue-800"
+        >
           Get a Free Audit
         </Link>
       </header>
 
-      <section className="mb-16 text-center bg-white p-8 rounded-2xl shadow-md">
-        <h2 className="text-3xl font-bold text-blue-700 mb-4">AI-Powered Digital Growth</h2>
-        <p className="text-gray-700 max-w-2xl mx-auto">
-          We leverage cutting-edge Artificial Intelligence to analyze your market, predict trends, and optimize your campaigns in real-time. Our AI tools ensure your business stays ahead of the competition with smarter strategies and faster results.
-        </p>
-      </section>
 
       <section
         className="mb-16 text-center"
@@ -141,25 +149,6 @@ export default function Home() {
         </div>
       </section>
 
-      <section
-        className="mb-16 text-center"
-      >
-        <h2 className="text-3xl font-bold mb-4">From Our Blog</h2>
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          <div className="bg-white p-6 rounded-2xl shadow hover:shadow-lg transition">
-            <h3 className="text-xl font-semibold text-blue-700 mb-2">Top SEO Tips for Local Businesses</h3>
-            <p className="text-gray-700">Learn how to rank higher in your area with simple, actionable SEO strategies.</p>
-          </div>
-          <div className="bg-white p-6 rounded-2xl shadow hover:shadow-lg transition">
-            <h3 className="text-xl font-semibold text-blue-700 mb-2">Landing Page Hacks That Convert</h3>
-            <p className="text-gray-700">Boost conversions by optimizing your CTAs, layout, and visuals.</p>
-          </div>
-          <div className="bg-white p-6 rounded-2xl shadow hover:shadow-lg transition">
-            <h3 className="text-xl font-semibold text-blue-700 mb-2">How Paid Ads Can 10x Your Growth</h3>
-            <p className="text-gray-700">Use Google and Facebook Ads the smart way to increase revenue fast.</p>
-          </div>
-        </div>
-      </section>
 
       {/* Meet Our Team section */}
       <section className="mb-16 text-center bg-white p-8 rounded-2xl shadow-md">
