@@ -51,6 +51,8 @@ export default function Home() {
             alt="NextGen Logo" 
             width={120} 
             height={20} 
+            className="object-contain hidden md:block"
+            priority
           />
         </Link>
         <div
