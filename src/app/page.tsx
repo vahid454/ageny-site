@@ -56,7 +56,7 @@ export default function Home() {
           />
         </Link>
         <div
-          className={`flex flex-col gap-4 md:flex-row md:space-x-12 md:items-center md:ml-1 mt-[50px] ${
+          className={`flex flex-col gap-4 md:flex-row md:space-x-12 md:items-center md:ml-1 md:mt-[50px] ${
             menuOpen ? 'block' : 'hidden'
           } md:block`}
         >
@@ -183,45 +183,57 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Client Testimonials slider-like section */}
-      <section className="mb-16 text-center bg-gradient-to-br from-blue-200 via-blue-50 to-blue-200 py-12 overflow-hidden">
+        {/* Client Testimonials slider */}
+    <section className="mb-16 text-center py-12 overflow-hidden">
         <h2 className="text-3xl font-bold mb-6">Client Testimonials</h2>
         <div className="relative max-w-3xl mx-auto">
-          <div className="flex space-x-8 animate-marquee whitespace-nowrap">
-            <div className="bg-white p-6 rounded-2xl shadow inline-block min-w-[300px]">
-              <p className="italic text-gray-700">"NextGen built our dream website and helped us reach new customers. Their team is smart, responsive, and results-driven."</p>
-              <p className="mt-4 font-semibold text-blue-800">– Sarah L., Founder at BloomWell</p>
-            </div>
-            <div className="bg-white p-6 rounded-2xl shadow inline-block min-w-[300px]">
-              <p className="italic text-gray-700">"The marketing strategy doubled our leads in just three months!"</p>
-              <p className="mt-4 font-semibold text-blue-800">– James R., CEO of GreenTech</p>
-            </div>
-            <div className="bg-white p-6 rounded-2xl shadow inline-block min-w-[300px]">
-              <p className="italic text-gray-700">"Their AI-driven insights are a game changer for our campaigns."</p>
-              <p className="mt-4 font-semibold text-blue-800">– Priya K., Marketing Manager</p>
-            </div>
-            <div className="bg-white p-6 rounded-2xl shadow inline-block min-w-[300px]">
-              <p className="italic text-gray-700">"A fantastic partner for all our digital needs."</p>
-              <p className="mt-4 font-semibold text-blue-800">– Alex M., Founder at UrbanFit</p>
-            </div>
-            {/* Duplicate testimonials for seamless looping */}
-            <div className="bg-white p-6 rounded-2xl shadow inline-block min-w-[300px]">
-              <p className="italic text-gray-700">"NextGen built our dream website and helped us reach new customers. Their team is smart, responsive, and results-driven."</p>
-              <p className="mt-4 font-semibold text-blue-800">– Sarah L., Founder at BloomWell</p>
-            </div>
-            <div className="bg-white p-6 rounded-2xl shadow inline-block min-w-[300px]">
-              <p className="italic text-gray-700">"The marketing strategy doubled our leads in just three months!"</p>
-              <p className="mt-4 font-semibold text-blue-800">– James R., CEO of GreenTech</p>
-            </div>
-            <div className="bg-white p-6 rounded-2xl shadow inline-block min-w-[300px]">
-              <p className="italic text-gray-700">"Their AI-driven insights are a game changer for our campaigns."</p>
-              <p className="mt-4 font-semibold text-blue-800">– Priya K., Marketing Manager</p>
-            </div>
-            <div className="bg-white p-6 rounded-2xl shadow inline-block min-w-[300px]">
-              <p className="italic text-gray-700">"A fantastic partner for all our digital needs."</p>
-              <p className="mt-4 font-semibold text-blue-800">– Alex M., Founder at UrbanFit</p>
-            </div>
-          </div>
+          {(() => {
+            const testimonials = [
+              {
+                text: `"NextGen built our dream website and helped us reach new customers. Their team is smart, responsive, and results-driven."`,
+                author: "– Sarah L., Founder at BloomWell",
+              },
+              {
+                text: `"The marketing strategy doubled our leads in just three months!"`,
+                author: "– James R., CEO of GreenTech",
+              },
+              {
+                text: `"Their AI-driven insights are a game changer for our campaigns."`,
+                author: "– Priya K., Marketing Manager",
+              },
+              {
+                text: `"A fantastic partner for all our digital needs."`,
+                author: "– Alex M., Founder at UrbanFit",
+              },
+            ];
+
+            const [current, setCurrent] = React.useState(0);
+
+            React.useEffect(() => {
+              const interval = setInterval(() => {
+                setCurrent((prev) => (prev + 1) % testimonials.length);
+              }, 5000); // change every 5s
+              return () => clearInterval(interval);
+            }, []);
+
+            return (
+              <div className="overflow-hidden">
+                <div
+                  className="flex transition-transform duration-700 ease-in-out"
+                  style={{ transform: `translateX(-${current * 100}%)` }}
+                >
+                  {testimonials.map((t, idx) => (
+                    <div key={idx} className="min-w-full px-6">
+                      <div className="bg-white p-6 rounded-2xl shadow">
+                        <p className="italic text-gray-700">{t.text}</p>
+                        <p className="mt-4 font-semibold text-blue-800">{t.author}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            );
+          })()}
         </div>
       </section>
 
