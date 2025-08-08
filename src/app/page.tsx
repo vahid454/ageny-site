@@ -1,15 +1,54 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 
 export default function Home() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
     <div className="min-h-screen bg-gradient-to-tr from-blue-100 via-white to-blue-200 text-gray-800 p-8">
-      <nav className="flex justify-center gap-6 text-blue-800 font-medium mb-8">
-        <Link href="/">Home</Link>
-        <Link href="/portfolio">Portfolio</Link>
-        <Link href="/pricing">Pricing</Link>
-        <Link href="/contact">Contact</Link>
-        <Link href="/blog">Blog</Link>
+      <nav className="flex flex-col md:flex-row md:justify-center gap-6 text-blue-800 font-medium mb-8">
+        <div className="flex justify-between items-center md:hidden">
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="focus:outline-none"
+            aria-label="Toggle menu"
+          >
+            <svg
+              className="w-8 h-8"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              {menuOpen ? (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              ) : (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              )}
+            </svg>
+          </button>
+        </div>
+        <div
+          className={`flex flex-col md:flex-row md:gap-6 md:items-center ${
+            menuOpen ? 'block' : 'hidden'
+          } md:block`}
+        >
+          <Link href="/" onClick={() => setMenuOpen(false)}>Home</Link>
+          <Link href="/portfolio" onClick={() => setMenuOpen(false)}>Portfolio</Link>
+          <Link href="/pricing" onClick={() => setMenuOpen(false)}>Pricing</Link>
+          <Link href="/contact" onClick={() => setMenuOpen(false)}>Contact</Link>
+          <Link href="/blog" onClick={() => setMenuOpen(false)}>Blog</Link>
+        </div>
       </nav>
       <header className="text-center py-20 bg-gradient-to-br from-blue-200 via-white to-blue-100 rounded-2xl shadow-md mb-16">
         <h1 className="text-5xl font-extrabold text-blue-800 mb-4">NextGen Digital Agency</h1>
@@ -18,6 +57,13 @@ export default function Home() {
           Get a Free Audit
         </Link>
       </header>
+
+      <section className="mb-16 text-center bg-white p-8 rounded-2xl shadow-md">
+        <h2 className="text-3xl font-bold text-blue-700 mb-4">AI-Powered Digital Growth</h2>
+        <p className="text-gray-700 max-w-2xl mx-auto">
+          We leverage cutting-edge Artificial Intelligence to analyze your market, predict trends, and optimize your campaigns in real-time. Our AI tools ensure your business stays ahead of the competition with smarter strategies and faster results.
+        </p>
+      </section>
 
       <section
         className="mb-16 text-center"
@@ -110,16 +156,6 @@ export default function Home() {
             <p className="mt-4 font-semibold text-blue-800">– Sarah L., Founder at BloomWell</p>
           </div>
         </div>
-      </section>
-
-      <section
-        className="mb-16 text-center"
-      >
-        <h2 className="text-3xl font-bold mb-6">Subscribe for Updates</h2>
-        <form className="max-w-md mx-auto space-y-4">
-          <input type="email" placeholder="Enter your email" className="w-full border p-3 rounded" />
-          <button className="bg-blue-700 text-white px-6 py-3 rounded hover:bg-blue-800">Subscribe</button>
-        </form>
       </section>
 
       <div
