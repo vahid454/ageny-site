@@ -1,13 +1,19 @@
 "use client";
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
+import khursheed from "@/assets/team/khursheed.png";
+import shahir from "@/assets/team/shahir.png";
+import vahid from "@/assets/team/vahid.png";
+import hansen from "@/assets/clients/hansen.png";
+import smart_plaza from "@/assets/clients/smart_plaza.png";
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <div className="min-h-screen bg-gradient-to-tr from-blue-100 via-white to-blue-200 text-gray-800 p-8">
-      <nav className="flex flex-col md:flex-row md:justify-center gap-6 text-blue-800 font-medium mb-8">
+      <nav className="flex flex-col md:flex-row md:justify-start gap-6 text-blue-800 font-medium mb-8">
         <div className="flex justify-between items-center md:hidden">
           <button
             onClick={() => setMenuOpen(!menuOpen)}
@@ -39,8 +45,16 @@ export default function Home() {
             </svg>
           </button>
         </div>
+        <Link href="/">
+          <Image 
+            src="/logo.png" 
+            alt="NextGen Logo" 
+            width={120} 
+            height={20} 
+          />
+        </Link>
         <div
-          className={`flex flex-col md:flex-row md:gap-6 md:items-center ${
+          className={`flex flex-col gap-4 md:flex-row md:space-x-12 md:items-center md:ml-1 mt-[50px] ${
             menuOpen ? 'block' : 'hidden'
           } md:block`}
         >
@@ -99,10 +113,8 @@ export default function Home() {
         <h2 className="text-3xl font-bold text-blue-700 mb-4">Our Clients</h2>
         <p className="text-gray-700 mb-6">We've proudly worked with companies across industries.</p>
         <div className="flex flex-wrap justify-center gap-6">
-          <img src="/clients/client1.png" alt="Client 1" className="h-12" />
-          <img src="/clients/client2.png" alt="Client 2" className="h-12" />
-          <img src="/clients/client3.png" alt="Client 3" className="h-12" />
-          <img src="/clients/client4.png" alt="Client 4" className="h-12" />
+          <Image src={hansen} alt="Hansen" className="h-20 w-auto" />
+          <Image src={smart_plaza} alt="Smart Plaza" className="h-20 w-auto" />
         </div>
       </section>
 
@@ -147,14 +159,66 @@ export default function Home() {
         </div>
       </section>
 
-      <section
-        className="mb-16 text-center bg-gradient-to-br from-blue-100 to-white py-12"
-      >
+      {/* Meet Our Team section */}
+      <section className="mb-16 text-center bg-white p-8 rounded-2xl shadow-md">
+        <h2 className="text-3xl font-bold text-blue-700 mb-8">Meet Our Team</h2>
+        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="flex flex-col items-center">
+            <Image src={khursheed} alt="Khursheed" className="w-32 h-32 object-cover rounded-full mb-4 shadow-lg" />
+            <h3 className="text-xl font-semibold text-gray-800">Khursheed</h3>
+            <p className="text-gray-600">Founder & CEO</p>
+          </div>
+          <div className="flex flex-col items-center">
+            <Image src={shahir} alt="Shahir" className="w-32 h-32 object-cover rounded-full mb-4 shadow-lg" />
+            <h3 className="text-xl font-semibold text-gray-800">Shahir</h3>
+            <p className="text-gray-600">Head of Marketing</p>
+          </div>
+          <div className="flex flex-col items-center">
+            <Image src={vahid} alt="Vahid" className="w-32 h-32 object-cover rounded-full mb-4 shadow-lg" />
+            <h3 className="text-xl font-semibold text-gray-800">Vahid</h3>
+            <p className="text-gray-600">Lead Developer</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Client Testimonials slider-like section */}
+      <section className="mb-16 text-center bg-gradient-to-br from-blue-200 via-blue-50 to-blue-200 py-12 overflow-hidden">
         <h2 className="text-3xl font-bold mb-6">Client Testimonials</h2>
         <div className="relative max-w-3xl mx-auto">
-          <div className="bg-white p-6 rounded-2xl shadow transition duration-300 ease-in-out">
-            <p className="italic text-gray-700">"NextGen built our dream website and helped us reach new customers. Their team is smart, responsive, and results-driven."</p>
-            <p className="mt-4 font-semibold text-blue-800">– Sarah L., Founder at BloomWell</p>
+          <div className="flex space-x-8 animate-marquee whitespace-nowrap">
+            <div className="bg-white p-6 rounded-2xl shadow inline-block min-w-[300px]">
+              <p className="italic text-gray-700">"NextGen built our dream website and helped us reach new customers. Their team is smart, responsive, and results-driven."</p>
+              <p className="mt-4 font-semibold text-blue-800">– Sarah L., Founder at BloomWell</p>
+            </div>
+            <div className="bg-white p-6 rounded-2xl shadow inline-block min-w-[300px]">
+              <p className="italic text-gray-700">"The marketing strategy doubled our leads in just three months!"</p>
+              <p className="mt-4 font-semibold text-blue-800">– James R., CEO of GreenTech</p>
+            </div>
+            <div className="bg-white p-6 rounded-2xl shadow inline-block min-w-[300px]">
+              <p className="italic text-gray-700">"Their AI-driven insights are a game changer for our campaigns."</p>
+              <p className="mt-4 font-semibold text-blue-800">– Priya K., Marketing Manager</p>
+            </div>
+            <div className="bg-white p-6 rounded-2xl shadow inline-block min-w-[300px]">
+              <p className="italic text-gray-700">"A fantastic partner for all our digital needs."</p>
+              <p className="mt-4 font-semibold text-blue-800">– Alex M., Founder at UrbanFit</p>
+            </div>
+            {/* Duplicate testimonials for seamless looping */}
+            <div className="bg-white p-6 rounded-2xl shadow inline-block min-w-[300px]">
+              <p className="italic text-gray-700">"NextGen built our dream website and helped us reach new customers. Their team is smart, responsive, and results-driven."</p>
+              <p className="mt-4 font-semibold text-blue-800">– Sarah L., Founder at BloomWell</p>
+            </div>
+            <div className="bg-white p-6 rounded-2xl shadow inline-block min-w-[300px]">
+              <p className="italic text-gray-700">"The marketing strategy doubled our leads in just three months!"</p>
+              <p className="mt-4 font-semibold text-blue-800">– James R., CEO of GreenTech</p>
+            </div>
+            <div className="bg-white p-6 rounded-2xl shadow inline-block min-w-[300px]">
+              <p className="italic text-gray-700">"Their AI-driven insights are a game changer for our campaigns."</p>
+              <p className="mt-4 font-semibold text-blue-800">– Priya K., Marketing Manager</p>
+            </div>
+            <div className="bg-white p-6 rounded-2xl shadow inline-block min-w-[300px]">
+              <p className="italic text-gray-700">"A fantastic partner for all our digital needs."</p>
+              <p className="mt-4 font-semibold text-blue-800">– Alex M., Founder at UrbanFit</p>
+            </div>
           </div>
         </div>
       </section>
